@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10110f"><meta name="description" content="Un espace communautaire pour échanger, partager et construire ensemble.">
+<title>LOOP — Community Board</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Loop accueil"><span class="brand-mark">L</span><span>LOOP<span class="brand-dot">.</span><small>COMMUNITY BOARD</small></span></a>
+  <nav class="main-nav"><a class="active" href="#board">Board</a><a href="#categories">Catégories</a><a href="#about">À propos</a></nav>
+  <div class="top-actions"><button class="btn btn-quiet" id="loginOpen">Connexion</button><button class="btn btn-lime" id="registerOpen">Rejoindre <span>↗</span></button><button class="avatar hidden" id="userBadge" title="Compte"></button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> LE POINT DE RENCONTRE DE LA COMMUNAUTÉ</div>
+  <h1>Les bonnes idées<br>font <span class="italic">bouger</span> les choses<span class="lime">.</span></h1>
+  <p>Un endroit pour poser tes questions, partager tes projets et échanger avec les gens qui font avancer la communauté.</p>
+  <div class="hero-buttons"><button class="btn btn-lime btn-large" id="newPostHero">Lancer une discussion <span>↗</span></button><a class="text-link" href="#board">Explorer le board <span>↓</span></a></div>
+  <div class="hero-stats"><div><strong id="statPosts">—</strong><span>DISCUSSIONS</span></div><i></i><div><strong id="statCategories">04</strong><span>CATÉGORIES</span></div><i></i><div><strong>24/7</strong><span>OUVERT À TOUS</span></div></div></div>
+  <div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-core"><span>LOOP</span><b>↗</b></div><div class="float-card float-top"><span class="mini-dot"></span> idées en mouvement</div><div class="float-card float-bottom"><span class="mini-avatar">L</span><span><b>La communauté</b><small>fait la différence.</small></span><span class="online"></span></div><div class="art-label">CONNECT. SHARE. BUILD.</div></div>
+</section>
+<section class="community-strip"><span><b class="strip-icon">✳</b> FAIS PARTIE DU MOUVEMENT</span><span class="strip-center">Une communauté. Des idées sans limite.</span><a href="#categories">Trouve ton espace <span>↗</span></a></section>
+<section class="board-layout" id="board">
+  <aside class="sidebar">
+    <div class="side-heading">TON ESPACE <span>＋</span></div>
+    <button class="side-link selected" data-category=""><span class="side-symbol">▦</span> Toutes les discussions <span class="side-count" id="allCount">—</span></button>
+    <div class="side-heading category-head" id="categories">CATÉGORIES</div><div id="categoryList" class="category-list"><div class="loading">Chargement…</div></div>
+    <div class="sidebar-note"><span class="note-star">✳</span><b>Une idée en tête ?</b><p>Chaque grande conversation commence par une question.</p><button id="newPostSide" class="text-link">Créer un sujet <span>↗</span></button></div>
+  </aside>
+  <section class="feed">
+    <div class="feed-header"><div><div class="eyebrow">L'ESPACE COMMUN</div><h2>Le board<span class="lime">.</span></h2><p>Les dernières conversations de la communauté.</p></div><button class="btn btn-lime" id="newPostBtn">＋ Nouveau sujet</button></div>
+    <div class="feed-tools"><div class="tabs"><button class="tab active" data-sort="recent">Récent</button><button class="tab" data-sort="popular">Populaires</button></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="Rechercher une discussion…" maxlength="100"><kbd>↵</kbd></label></div>
+    <div class="feed-meta"><span id="feedCount">DISCUSSIONS</span><button id="refreshBtn" class="refresh">↻ Actualiser</button></div>
+    <div id="postList" class="post-list"><div class="empty-state">Chargement des discussions…</div></div>
+    <div class="feed-footer"><span>Tu es arrivé au bout du feed.</span><span class="footer-star">✳</span></div>
+  </section>
+</section>
+<section class="bottom-cta" id="about"><div><div class="eyebrow">TA PLACE EST ICI</div><h2>La prochaine bonne idée<br>pourrait être <span class="italic">la tienne.</span></h2></div><button class="btn btn-lime btn-large" id="ctaRegister">Rejoindre la communauté <span>↗</span></button></section>
+</main>
+<footer><a class="brand footer-brand" href="/"><span class="brand-mark">L</span><span>LOOP<span class="brand-dot">.</span><small>COMMUNITY BOARD</small></span></a><span>Fait pour les idées qui avancent.</span><span>© <span id="year"></span> LOOP COMMUNITY</span></footer>
+
+<div class="modal-backdrop hidden" id="authModal"><section class="modal"><button class="modal-close" data-close>×</button><div class="eyebrow">BIENVENUE CHEZ LOOP</div><h2 id="authTitle">Content de te revoir<span class="lime">.</span></h2><p id="authSubtitle">Connecte-toi pour retrouver la communauté.</p><form id="authForm"><div class="field hidden" id="usernameField"><label for="authUsername">PSEUDO</label><input id="authUsername" name="username" autocomplete="username" minlength="3" maxlength="24" placeholder="Ton pseudo"></div><div class="field"><label for="authLogin" id="loginLabel">PSEUDO OU E-MAIL</label><input id="authLogin" name="login" autocomplete="username" required placeholder="pseudo ou email"></div><div class="field hidden" id="emailField"><label for="authEmail">E-MAIL</label><input id="authEmail" name="email" type="email" autocomplete="email" placeholder="toi@exemple.fr"></div><div class="field"><label for="authPassword">MOT DE PASSE</label><input id="authPassword" name="password" type="password" minlength="10" autocomplete="current-password" required placeholder="10 caractères minimum"></div><p class="form-error" id="authError"></p><button class="btn btn-lime btn-large full" id="authSubmit">Connexion <span>↗</span></button></form><p class="modal-switch" id="authSwitch">Pas encore de compte ? <button id="switchAuth">Créer un compte</button></p></section></div>
+<div class="modal-backdrop hidden" id="postModal"><section class="modal modal-wide"><button class="modal-close" data-close>×</button><div class="eyebrow">FAIS TOURNER LES IDÉES</div><h2>Nouvelle discussion<span class="lime">.</span></h2><p>Pose ta question ou partage ce sur quoi tu travailles.</p><form id="postForm"><div class="field"><label for="postTitle">TITRE</label><input id="postTitle" name="title" required minlength="4" maxlength="140" placeholder="De quoi veux-tu parler ?"></div><div class="field"><label for="postCategory">CATÉGORIE</label><select id="postCategory" name="category"></select></div><div class="field"><label for="postBody">MESSAGE</label><textarea id="postBody" name="body" required minlength="10" maxlength="10000" rows="6" placeholder="Raconte-nous…"></textarea></div><p class="form-error" id="postError"></p><button class="btn btn-lime btn-large full">Publier la discussion <span>↗</span></button></form></section></div>
+<div class="toast hidden" id="toast"></div>
+<script src="/app.js" defer></script>
+</body></html>
